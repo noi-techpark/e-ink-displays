@@ -18,6 +18,7 @@ int imgHeight = 0;
 int imgWidth = 0;
 int imgPosX = 0;
 int imgPosY = 0;
+int imgDataIdx = 0;
 const unsigned int IMG_DATA_SIZE = 1024;
 unsigned char imgData[IMG_DATA_SIZE];
 
@@ -114,6 +115,20 @@ void parseData() {
   strtokIndx = strtok(NULL, ",");
   imgPosY = atoi(strtokIndx);
 
+  imgDataIdx = 0;
+  while(strtokIndx != NULL) {
+    strtokIndx = strtok(NULL, ",");
+    imgData[imgDataIdx] = strtol(strtokIndx, 0, 16);
+    imgDataIdx++;
+    Serial.print(imgDataIdx);
+    Serial.print(": \t ");
+    Serial.print(strtokIndx);
+    Serial.print("\t = ");
+    Serial.print(imgData[imgDataIdx], HEX);
+    Serial.println();
+  }
+  imgDataIdx--;
+
 }
 
 //=============
@@ -133,6 +148,10 @@ void replyToPC() {
     Serial.print("; POSY = ");
     Serial.print(imgPosY);
     Serial.print("; DATA = ");
+    for(int i = 0; i < imgDataIdx; i++) {
+      Serial.print(imgData[i], HEX);
+      Serial.print(" ");
+    }
     Serial.println(">");
   }
 }
