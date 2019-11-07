@@ -92,47 +92,6 @@ void getDataFromPC() {
   }
 }
 
-//=============
-
-void parseData() {
-
-  // split the data into its parts
-
-  char * strtokIndx; // this is used by strtok() as an index
-
-  strtokIndx = strtok(inputBuffer, ",");
-  strcpy(messageFromPC, strtokIndx);
-
-  strtokIndx = strtok(NULL, ",");
-  imgHeight = atoi(strtokIndx);
-
-  strtokIndx = strtok(NULL, ",");
-  imgWidth = atoi(strtokIndx);
-
-  strtokIndx = strtok(NULL, ",");
-  imgPosX = atoi(strtokIndx);
-
-  strtokIndx = strtok(NULL, ",");
-  imgPosY = atoi(strtokIndx);
-
-  imgDataIdx = 0;
-  while(strtokIndx != NULL) {
-    strtokIndx = strtok(NULL, ",");
-    imgData[imgDataIdx] = strtol(strtokIndx, 0, 16);
-    imgDataIdx++;
-    Serial.print(imgDataIdx);
-    Serial.print(": \t ");
-    Serial.print(strtokIndx);
-    Serial.print("\t = ");
-    Serial.print(imgData[imgDataIdx], HEX);
-    Serial.println();
-  }
-  imgDataIdx--;
-
-}
-
-//=============
-
 void replyToPC() {
 
   if (newDataFromPC) {
