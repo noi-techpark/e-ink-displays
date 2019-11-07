@@ -36,7 +36,7 @@ imagePrint(ImagePtr img, bool withData) {
         printf("Image (NULL)\n");
     } else {
         printf("Image (name=%s, x=%d, y=%d, h=%d, w=%d, dataSize=%ld)\n", img->name, img->x, img->y, img->h, img->w, img->dataSize);
-        if (withData) {
+        if (withData && img->dataSize > 0) {
 
             unsigned char *ptr = img->data;
 
@@ -44,24 +44,16 @@ imagePrint(ImagePtr img, bool withData) {
                 for (unsigned int x = 0; x < img->w; x++) {
                     if (pgm_read_byte(ptr) & (0x80 >> (x % 8))) {
                         printf("x");
-                        // printf("x%x\n", 0x80 >> (x % 8));
                     } else {
                         printf(".");
-                        // printf(".%x\n", 0x80 >> (x % 8));
                     }
                     
                     //One pixel is 8 bits
                     if (x % 8 == 7) {
                         ptr++;
-                        // printf("---next x\n");
                     }
                 }
-                //printf("------\n");
                 printf("\n");
-                if (y % 8 != 0) {
-                    // ptr++;
-                    // printf("---next y\n");
-                }
             }
         }
     }
@@ -119,13 +111,13 @@ imageParseInputBodyChunk(ImagePtr img, char *input) {
     char *ptr;
     ptr = strtok(input, ",");
     length += strlen(ptr) + 1;
-    printf("L=%d %s\n", length, ptr);
+    //printf("L=%d %s\n", length, ptr);
 
     while(ptr != NULL && *ptr != 0) {
         imageAddData(img, ptr);
         length += strlen(ptr) + 1;
         ptr = strtok(NULL, ",");
-        printf("L=%ld length=%d %s\n", ptr == NULL ? -1 : strlen(ptr), length, ptr);
+        //printf("L=%ld length=%d %s\n", ptr == NULL ? -1 : strlen(ptr), length, ptr);
     }
     return ptr + length;
 }
