@@ -44,18 +44,23 @@ imagePrint(ImagePtr img, bool withData) {
                 for (unsigned int x = 0; x < img->w; x++) {
                     if (pgm_read_byte(ptr) & (0x80 >> (x % 8))) {
                         printf("x");
+                        // printf("x%x\n", 0x80 >> (x % 8));
                     } else {
                         printf(".");
+                        // printf(".%x\n", 0x80 >> (x % 8));
                     }
                     
                     //One pixel is 8 bits
                     if (x % 8 == 7) {
                         ptr++;
+                        // printf("---next x\n");
                     }
                 }
+                //printf("------\n");
                 printf("\n");
                 if (y % 8 != 0) {
-                    ptr++;
+                    // ptr++;
+                    // printf("---next y\n");
                 }
             }
         }
