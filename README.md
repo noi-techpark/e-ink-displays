@@ -83,5 +83,5 @@ which caused a "file not found" error on Linux.
 **Resources**
 - Example code of all [e-papers by Waveshare](https://github.com/waveshare/e-Paper)
 - How to [create new fonts](https://wavesharejfs.blogspot.com/2018/08/make-new-larger-font-for-waveshare-spi.html)
-- E-Paper Shield on Waveshare: [wiki](https://www.waveshare.com/wiki/E-Paper_Shield), [manual (pdf)](https://www.waveshare.com/w/upload/c/c8/E-Paper_Shield_User_Manual_en.pdf), and [demo code](https://www.waveshare.com/w/upload/6/69/E-Paper_Shield_Code.7z)
+- E-Paper Shield on Waveshare: [wiki](https://www.waveshare.com/wiki/E-Paper_Shield), [manual (pdf)](/E-Paper_Shield_User_Manual_en.pdf), and [demo code](/playground/waveshare-democode)
 

@@ -7,9 +7,13 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-
 #define IMAGE_NAME_SIZE 16
-#define IMAGE_DATA_CHUNK_SIZE 10
+#define IMAGE_DATA_CHUNK_SIZE 512
+
+#ifndef pgm_read_byte2
+  #define pgm_read_byte2(addr) (*(unsigned char *)(addr))
+#endif
+
 
 struct Image {
     bool hasName;
