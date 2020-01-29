@@ -36,7 +36,7 @@ void loop() {
             Serial.println("Invalid input: Type 0 for NOI, 1 for NOI-IMAGE and 2 for CAR...");
         }
     }
-} 
+}
 
 void paint_image_noi_noimage() {
     paint_init("NOI (NO IMAGE)");
